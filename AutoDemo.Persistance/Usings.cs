@@ -1,0 +1,11 @@
+﻿global using AutoDemo.Core.Base;
+global using AutoDemo.Core.Entities;
+global using AutoDemo.Core.Entities.Additional;
+global using AutoDemo.Persistance.Data;
+global using AutoDemo.Persistance.Data.Mappers;
+global using AutoDemo.Persistance.Data.Models;
+global using AutoDemo.Persistance.Data.Repositories;
+global using Microsoft.Data.Sqlite;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;

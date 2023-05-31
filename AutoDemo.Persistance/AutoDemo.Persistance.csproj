@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <ProjectReference Include="..\AutoDemo.Core\AutoDemo.Core.csproj" />
+  </ItemGroup>
+
+</Project>
