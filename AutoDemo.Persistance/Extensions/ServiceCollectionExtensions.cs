@@ -2,7 +2,8 @@
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection RegisterSqliteDependencies(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection RegisterSqliteDependencies(this IServiceCollection services,
+        IConfiguration configuration)
     {
         RegisterDbContext(services, configuration);
 
@@ -17,10 +18,6 @@ public static class ServiceCollectionExtensions
         string connectionString = configuration.GetConnectionString("SqlLiteConnection");
         SqliteConnection connection = new SqliteConnection(connectionString);
         connection.Open();
-        services.AddDbContext<AppDbContext>(options =>
-        {
-            options.UseSqlite(connection);
-            options.EnableSensitiveDataLogging();
-        });
+        services.AddDbContext<AppDbContext>(options => options.UseSqlite(connection));
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace AutoDemo.Persistance.Data.Mappers;
 
-internal static class ModelToEntityMapper
+internal static class DbModelToEntityMapper
 {
     internal static Offer ToEntity(this OfferDb offer)
     {

@@ -1,6 +1,6 @@
 ﻿namespace AutoDemo.Persistance.Data.Repositories;
 
-public sealed class VendorRepository : IVendorRepository
+public sealed class VendorRepository : IVendorRepository, IDisposable
 {
     private readonly AppDbContext _context;
 
@@ -15,5 +15,10 @@ public sealed class VendorRepository : IVendorRepository
             .FromSqlRaw(Scripts.GetTopVendorsScript)
             .AsNoTracking()
             .ToListAsync(token);
+    }
+
+    public void Dispose()
+    {
+        _context?.Dispose();
     }
 }

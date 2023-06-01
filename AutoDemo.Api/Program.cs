@@ -17,9 +17,9 @@ app.UseHttpsRedirection();
 app.MapGet("/offers", async (string brand, string model, string vendorName,
     IOfferRepository repository, CancellationToken token) =>
 {
-    IList<Offer> result = await repository.GetOffers(
+    IList<Offer> offers = await repository.GetOffers(
         new OfferFilterOptions(brand, model, vendorName), token);
-    return Results.Ok(new { Offers = result, result.Count });
+    return Results.Ok(new { offers, offers.Count });
 });
 
 app.MapPost("/offers/add", async (OfferDto offer,
@@ -29,7 +29,7 @@ app.MapPost("/offers/add", async (OfferDto offer,
     return Results.NoContent();
 });
 
-app.MapGet("/vendors", async (IVendorRepository repository, CancellationToken token) =>
+app.MapGet("/vendors/top", async (IVendorRepository repository, CancellationToken token) =>
 {
     var vendors = await repository.GetTopVendors(token);
     return Results.Ok(vendors);

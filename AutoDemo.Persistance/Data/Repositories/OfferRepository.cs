@@ -1,6 +1,6 @@
 ﻿namespace AutoDemo.Persistance.Data.Repositories;
 
-public sealed class OfferRepository : IOfferRepository
+public sealed class OfferRepository : IOfferRepository, IDisposable
 {
     private readonly AppDbContext _context;
 
@@ -11,7 +11,7 @@ public sealed class OfferRepository : IOfferRepository
 
     public async Task CreateOffer(Offer offer, CancellationToken token)
     {
-        await _context.Offers.AddAsync(offer.ToModel(), token);
+        await _context.Offers.AddAsync(offer.ToDbModel(), token);
         await _context.SaveChangesAsync(token);
     }
 
@@ -26,5 +26,10 @@ public sealed class OfferRepository : IOfferRepository
             .ToListAsync(token);
 
         return models.Select(x => x.ToEntity()).ToList();
+    }
+
+    public void Dispose()
+    {
+        _context?.Dispose();
     }
 }
